@@ -2,7 +2,7 @@
 
 LIDAR based orienteering map of Luxembourg 
 
-See [**HERE**](https://jgaffuri.github.io/OriMap/code/mapantlux/) (under progress).
+See [**HERE**](https://jgaffuri.github.io/mapantlu/code/js/) (under progress).
 
 ## Objective
 
