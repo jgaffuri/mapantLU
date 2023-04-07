@@ -4,4 +4,7 @@ Mapant.lu is a LIDAR based orienteering map of Luxembourg, similar to [mapant.fi
 
 See [**HERE**](https://jgaffuri.github.io/mapantLU/code/js/) (under progress).
 
-[Resource estimation](estimation.md)
+![mapant orienteering map LIDAR Luxembourg](/docs/img/overview1.png)
+![mapant orienteering map LIDAR Luxembourg](/docs/img/overview2.png)
+
+[Resource estimation](docs/estimation.md)
