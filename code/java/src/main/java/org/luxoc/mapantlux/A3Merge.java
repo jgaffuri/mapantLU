@@ -1,4 +1,4 @@
-package org.orimap.mapantlux;
+package org.luxoc.mapantlux;
 
 import java.io.File;
 import java.nio.file.Files;

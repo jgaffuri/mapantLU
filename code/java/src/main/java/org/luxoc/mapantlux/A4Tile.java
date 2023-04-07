@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.orimap.mapantlux;
+package org.luxoc.mapantlux;
 
 /**
  * @author juju

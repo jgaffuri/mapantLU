@@ -1,4 +1,4 @@
-package org.orimap.mapantlux;
+package org.luxoc.mapantlux;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +31,7 @@ public class A1Download {
 		String destDir = "/home/juju/Bureau/orienteering/lidar/in/lux/";
 
 		LOGGER.info("Load tiles");
-		ArrayList<Feature> ziptiles = GeoData.getFeatures("/home/juju/Bureau/workspace/OriMap/code/mapantlux/lidar_urls.gpkg");
+		ArrayList<Feature> ziptiles = GeoData.getFeatures("/home/juju/Bureau/workspace/mapantLU/code/qgis/lidar_urls.gpkg");
 		LOGGER.info(ziptiles.size());
 
 		int xMin = 60000;

@@ -1,4 +1,4 @@
-package org.orimap.mapantlux.old;
+package org.luxoc.mapantlux.old;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,8 +7,8 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.orimap.mapantlux.A0Status;
-import org.orimap.mapantlux.A3Merge;
+import org.luxoc.mapantlux.A0Status;
+import org.luxoc.mapantlux.A3Merge;
 
 public class A3MergeOld {
 	final static Logger LOGGER = LogManager.getLogger(A3MergeOld.class.getName());
