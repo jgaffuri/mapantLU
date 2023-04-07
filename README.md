@@ -1,1 +1,1 @@
-# mapant-Luxembourg
+# MapAnt Luxembourg
