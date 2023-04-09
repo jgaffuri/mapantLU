@@ -15,8 +15,8 @@ public class A2ToRGB {
 	public static void main(String[] args) throws Throwable {
 		LOGGER.info("Start");
 
-		int xS = 58200, yS = 40000;
-		int xE = 62000, yE = 150000;
+		int xS = 59000, yS = 40000;
+		int xE = 65000, yE = 150000;
 
 		LOGGER.info("Get output files");
 		Set<String> files = A0Status.getFiles(pathOut);
