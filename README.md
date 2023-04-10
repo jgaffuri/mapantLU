@@ -6,5 +6,9 @@ See [**HERE**](https://jgaffuri.github.io/mapantLU/code/js/) (under progress).
 
 ![mapant orienteering map LIDAR Luxembourg](/docs/img/overview1.png)
 ![mapant orienteering map LIDAR Luxembourg](/docs/img/overview2.png)
+![mapant orienteering map LIDAR Luxembourg](/docs/img/overview3.png)
+![mapant orienteering map LIDAR Luxembourg](/docs/img/overview4.png)
+![mapant orienteering map LIDAR Luxembourg](/docs/img/overview5.png)
+![mapant orienteering map LIDAR Luxembourg](/docs/img/overview6.png)
 
 [Resource estimation](docs/estimation.md)
