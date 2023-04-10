@@ -49,7 +49,7 @@ const olu = L.tileLayer('https://ahahah.eu/luxoc/map/luxocmap/{z}/{x}/{y}.png', 
 });
 
 const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: "Â© <a target=\"_parent\" href=\"https://www.openstreetmap.org\">OpenStreetMap</a> and contributors, under an <a target=\"_parent\" href=\"https://www.openstreetmap.org/copyright\">open license</a>",
+    attribution: "(C) <a target=\"_parent\" href=\"https://www.openstreetmap.org\">OpenStreetMap</a> and contributors, under an <a target=\"_parent\" href=\"https://www.openstreetmap.org/copyright\">open license</a>",
 	maxZoom: 16
 });
 
@@ -68,6 +68,8 @@ const map = L.map('map', {
 	attributionControl: true,
     layers: [malu]
 });
+
+map.attributionControl.setPrefix(false)
 
 	const baseLayers = {
 		'Mapant lu': malu,
