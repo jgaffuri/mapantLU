@@ -49,7 +49,7 @@ const olu = L.tileLayer('https://ahahah.eu/luxoc/map/luxocmap/{z}/{x}/{y}.png', 
 });
 
 const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: "(C) <a target=\"_parent\" href=\"https://www.openstreetmap.org\">OpenStreetMap</a> and contributors, under an <a target=\"_parent\" href=\"https://www.openstreetmap.org/copyright\">open license</a>",
+    attribution: "(C) <a target=\"_parent\" href=\"https://www.openstreetmap.org\">OpenStreetMap</a> and contributors, under <a target=\"_parent\" href=\"https://www.openstreetmap.org/copyright\">license</a>",
 	maxZoom: 16
 });
 
@@ -62,6 +62,14 @@ const dsm2 = L.tileLayer('https://{s}.lidar-hillshade-2019.openstreetmap.lu/laye
 	maxZoom: 16
 });
 
+
+//https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/15/16960/11162.jpeg
+const img = L.tileLayer('https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.jpeg', {
+    attribution: "<a href=\"https://act.public.lu\">ACT</a>, <a href=\"https://map.geoportail.lu/\">Geoportail.lu</a>",
+	maxZoom: 16
+});
+
+
 const map = L.map('map', {
 	center: [latIni, lonIni],
 	zoom: zoomIni,
@@ -73,10 +81,11 @@ map.attributionControl.setPrefix(false)
 
 	const baseLayers = {
 		'Mapant lu': malu,
-		'Old version': olu,
+		'Imagery': img,
 		'DSM 1': dsm1,
 		'DSM 2': dsm2,
-		'OpenStreetMap': osm
+		'Old version': olu,
+		'OpenStreetMap': osm,
 	};
 
 
