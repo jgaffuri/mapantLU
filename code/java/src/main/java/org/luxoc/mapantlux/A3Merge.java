@@ -103,12 +103,13 @@ public class A3Merge {
 
 				LOGGER.info("   Build pyramids with gdaladdo");
 				//https://gdal.org/programs/gdaladdo.html
-				A3Merge.run("gdaladdo -r gauss "+pathOut+"lux_merged/lux"+sign+".tiff", true);
-				//A3Merge.run("gdaladdo -r average "+pathOut+"lux_merged/lux"+sign+".tiff", true);
-
-				System.exit(0);
+				A3Merge.run("gdaladdo -r average "+pathOut+"lux_merged/lux"+sign+".tiff", true);
+				//A3Merge.run("gdaladdo -r gauss "+pathOut+"lux_merged/lux"+sign+".tiff", true);
+				//A3Merge.run("gdaladdo -r nearest "+pathOut+"lux_merged/lux"+sign+".tiff", true);
+				//A3Merge.run("gdaladdo -r rms "+pathOut+"lux_merged/lux"+sign+".tiff", true);
+				//A3Merge.run("gdaladdo -r bilinear "+pathOut+"lux_merged/lux"+sign+".tiff", true);
+				//System.exit(0);
 			}
-
 
 		LOGGER.info("End");
 	}
