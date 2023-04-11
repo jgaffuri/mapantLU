@@ -102,6 +102,8 @@ public class A3Merge {
 				A3Merge.run(cmd, true);
 
 				LOGGER.info("   Build pyramids with gdaladdo");
+				//https://gdal.org/programs/gdaladdo.html
+				// test -r gauss ?
 				A3Merge.run("gdaladdo -r average "+pathOut+"lux_merged/lux"+sign+".tiff", true);
 
 			}
