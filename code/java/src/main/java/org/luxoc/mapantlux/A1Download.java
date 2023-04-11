@@ -37,7 +37,7 @@ public class A1Download {
 		int xMin = 61500;
 		int xMax = 62500;//;51500
 		int yMin = 0;
-		int yMax = 900000;//; 95500
+		int yMax = 100000;//; 95500
 
 		//TODO parallelisation
 		//ArrayList<String> urls = new ArrayList();
