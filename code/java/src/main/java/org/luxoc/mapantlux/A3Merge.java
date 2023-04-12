@@ -96,9 +96,14 @@ public class A3Merge {
 				if(nb == 0) continue;
 
 				LOGGER.info("   Run gdal_merge");
-				String cmd = "gdal_merge.py -init \"255 255 255\" -o " +pathOut+"lux_merged/lux"+sign+".tiff " + sb.toString();
+				String cmd = "gdal_merge.py -init \"254 219 166\" -co COMPRESS=JPEG -o " +pathOut+"lux_merged/lux"+sign+".tiff " + sb.toString();
 				//gdal_merge.py -o /home/juju/Bureau/orienteering/lidar/out/lux.tiff /home/juju/Bureau/orienteering/lidar/out/lux/LIDAR2019_NdP_54500_112500_EPSG2169.laz.png /home/juju/Bureau/orienteering/lidar/out/lux/LIDAR2019_NdP_54500_112000_EPSG2169.laz.png
 				//LOGGER.info("   " + cmd);
+				A3Merge.run(cmd, true);
+
+				LOGGER.info("   Run gdal_wrap to reproject");
+				//gdalwarp -t_srs EPSG:4326 input.tif output.tif
+				cmd = "gdal_wrap -co COMPRESS=JPEG -t_srs EPSG:3857 " +pathOut+"lux_merged/lux"+sign+".tiff " +pathOut+"lux_merged/lux"+sign+"_3857.tiff ";
 				A3Merge.run(cmd, true);
 
 				LOGGER.info("   Build pyramids with gdaladdo");
