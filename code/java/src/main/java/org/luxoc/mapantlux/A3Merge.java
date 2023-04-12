@@ -98,27 +98,34 @@ public class A3Merge {
 				LOGGER.info("   Run gdal_merge");
 				//254 219 166
 				//-co COMPRESS=JPEG
-				String cmd = "gdal_merge.py -init \"255 255 255\" -o " +pathOut+"lux_merged/lux"+sign+".tiff " + sb.toString();
+				String cmd = "gdal_merge.py -init \"255 255 255\" -o " +pathOut+"lux_merged/lux"+sign+"_.tiff " + sb.toString();
 				//gdal_merge.py -o /home/juju/Bureau/orienteering/lidar/out/lux.tiff /home/juju/Bureau/orienteering/lidar/out/lux/LIDAR2019_NdP_54500_112500_EPSG2169.laz.png /home/juju/Bureau/orienteering/lidar/out/lux/LIDAR2019_NdP_54500_112000_EPSG2169.laz.png
 				//LOGGER.info("   " + cmd);
 				A3Merge.run(cmd, true);
 
 				LOGGER.info("   Run gdal_wrap to reproject");
 				//gdalwarp -t_srs EPSG:4326 input.tif output.tif
-				cmd = "gdalwarp -co COMPRESS=JPEG -t_srs EPSG:3857 " +pathOut+"lux_merged/lux"+sign+".tiff " +pathOut+"lux_merged/lux"+sign+"_3857.tiff ";
-				LOGGER.info("   " + cmd);
+				//-co COMPRESS=JPEG
+				cmd = "gdalwarp -overwrite -r bilinear -t_srs EPSG:3857 " +pathOut+"lux_merged/lux"+sign+"_.tiff " +pathOut+"lux_merged/lux"+sign+".tiff ";
+				//LOGGER.info("   " + cmd);
 				A3Merge.run(cmd, true);
 
-				System.exit(0);
+				new File(pathOut+"lux_merged/lux"+sign+"_.tiff").delete();
 
-				LOGGER.info("   Build pyramids with gdaladdo");
+				LOGGER.info("   Run gdal_translate for PNG conversion");
+				cmd = "gdal_translate -of PNG " + pathOut+"lux_merged/lux"+sign+".tiff " + pathOut+"lux_merged/lux"+sign+".png";
+				A3Merge.run(cmd, true);
+				new File(pathOut+"lux_merged/lux"+sign+".tiff").delete();
+
+				LOGGER.info("   Run gdaladdo to build pyramid");
 				//https://gdal.org/programs/gdaladdo.html
-				A3Merge.run("gdaladdo -r average "+pathOut+"lux_merged/lux"+sign+".tiff", true);
+				A3Merge.run("gdaladdo -r bilinear "+pathOut+"lux_merged/lux"+sign+".png", true);
 				//A3Merge.run("gdaladdo -r gauss "+pathOut+"lux_merged/lux"+sign+".tiff", true);
 				//A3Merge.run("gdaladdo -r nearest "+pathOut+"lux_merged/lux"+sign+".tiff", true);
 				//A3Merge.run("gdaladdo -r rms "+pathOut+"lux_merged/lux"+sign+".tiff", true);
 				//A3Merge.run("gdaladdo -r bilinear "+pathOut+"lux_merged/lux"+sign+".tiff", true);
-				//System.exit(0);
+
+				System.exit(0);
 			}
 
 		LOGGER.info("End");
