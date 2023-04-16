@@ -15,4 +15,5 @@ See the map [**HERE**](https://jgaffuri.github.io/mapantLU/code/js/) (under prog
 
 ## Other
 
-[Resource estimation](docs/estimation.md)
+- [Resource estimation](docs/estimation.md)
+- [Open data Luxembourg](https://data.public.lu/fr/reuses/cartographie-pour-course-dorientation-mapant-luxembourg/)
