@@ -46,7 +46,7 @@ public class A3Merge {
 		LOGGER.info(files.size());
 
 		int xS = 47500, yS = 55500;
-		//int xE = 50000, yE = 60000;
+		//int xE = 55000, yE = 65000;
 		int xE = 108000, yE = 140000;
 		int step = 5000;
 
@@ -106,7 +106,7 @@ public class A3Merge {
 				LOGGER.info("   Run gdal_wrap to reproject");
 				//gdalwarp -t_srs EPSG:4326 input.tif output.tif
 				//-co COMPRESS=JPEG
-				cmd = "gdalwarp -overwrite -r bilinear -t_srs EPSG:3857 " +pathOut+"lux_merged/lux"+sign+"_.tiff " +pathOut+"lux_merged/lux"+sign+".tiff ";
+				cmd = "gdalwarp -overwrite -r bilinear -s_srs EPSG:2169 -t_srs EPSG:3857 -dstalpha " +pathOut+"lux_merged/lux"+sign+"_.tiff " +pathOut+"lux_merged/lux"+sign+".tiff ";
 				//LOGGER.info("   " + cmd);
 				A3Merge.run(cmd, true);
 
