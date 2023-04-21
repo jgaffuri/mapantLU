@@ -61,7 +61,6 @@ public class A3Merge {
 
 					//exclude files out of the tile
 					String f2 = f.replace(pathOut+"out/lux_rgb/", "");
-					System.out.println(f2);
 					String[] sp = f2.split("_");
 					int x_ = Integer.parseInt(sp[2]);
 					if(x_<x) continue;
