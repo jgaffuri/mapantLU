@@ -1,7 +1,9 @@
 package org.luxoc.mapantlux;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
@@ -53,9 +55,16 @@ public class A2ToRGB {
 
 			//
 			LOGGER.info(f);
-			String cmd = "pct2rgb.py " + f + " " + f;
+			String fOut = f.replace(".png", "_rgb.png");
+			String cmd = "pct2rgb.py " + f + " " + fOut;
 			//System.out.println(cmd);
 			A3Merge.run(cmd, true);
+
+			//copy pgw file
+			Files.copy(
+					(new File(f.replace(".png", ".pgw"))).toPath(),
+					(new File(f.replace(".png", "_rgb.pgw"))).toPath(),
+					StandardCopyOption.REPLACE_EXISTING);
 		}
 
 		LOGGER.info("End");
