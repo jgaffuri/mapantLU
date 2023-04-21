@@ -21,6 +21,10 @@ public class A2ToRGB {
 		//int xS = 62000, yS = 99000;
 		//int xE = 65000, yE = 150000;
 
+		//int xS = 61500, yS = 98000;
+		//int xE = 70500, yE = 107000;
+
+
 		LOGGER.info("Get output files");
 		Set<String> files = A0Status.getFiles(pathOut);
 		LOGGER.info(files.size());
