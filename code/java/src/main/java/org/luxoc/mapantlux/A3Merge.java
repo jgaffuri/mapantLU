@@ -29,8 +29,6 @@ public class A3Merge {
 	//to operate gdalbuildvrt on RGB rasters instead
 
 	static String pathOut = "/home/juju/Bureau/orienteering/lidar/";
-	static String listFile = pathOut + "lux_merged/lux_list.txt";
-
 
 	public static void main(String[] args) throws Throwable {
 		LOGGER.info("Start");
@@ -42,12 +40,12 @@ public class A3Merge {
 		new File(pathOut + "lux_merged/").mkdirs();
 
 		LOGGER.info("Get output files");
-		Set<String> files = A0Status.getFiles(pathOut+"out/lux/");
+		Set<String> files = A0Status.getFiles(pathOut+"out/lux_rgb/");
 		LOGGER.info(files.size());
 
-		int xS = 47500, yS = 55500;
+		int xS = 45000, yS = 55000;
 		//int xE = 55000, yE = 65000;
-		int xE = 108000, yE = 140000;
+		int xE = 110000, yE = 140000;
 		int step = 5000;
 
 		for(int x=xS; x<xE; x+=step)
@@ -58,15 +56,11 @@ public class A3Merge {
 				int nb=0;
 				StringBuffer sb = new StringBuffer();
 				for(String f : files) {
-					if(!f.contains("rgb")) continue;
 					if(f.contains(".pgw")) continue;
 					if(f.contains(".xml")) continue;
 
-					int size = (int) Files.size(Paths.get(f));
-					if(size == 0) continue;
-
 					//exclude files out of the tile
-					String f2 = f.replace(pathOut+"lux/", "");
+					String f2 = f.replace(pathOut+"lux_rgb/", "");
 					String[] sp = f2.split("_");
 					int x_ = Integer.parseInt(sp[2]);
 					if(x_<x) continue;
