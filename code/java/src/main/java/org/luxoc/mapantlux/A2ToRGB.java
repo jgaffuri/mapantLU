@@ -26,6 +26,7 @@ public class A2ToRGB {
 		LOGGER.info(files.size());
 
 		for(String f : files) {
+			if(!f.contains("_depr")) continue;
 			if(f.contains(".pgw")) continue;
 			if(f.contains(".xml")) continue;
 			if(f.contains(".laz.png")) continue;
