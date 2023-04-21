@@ -60,7 +60,8 @@ public class A3Merge {
 					if(f.contains(".xml")) continue;
 
 					//exclude files out of the tile
-					String f2 = f.replace(pathOut+"lux_rgb/", "");
+					String f2 = f.replace(pathOut+"out/lux_rgb/", "");
+					System.out.println(f2);
 					String[] sp = f2.split("_");
 					int x_ = Integer.parseInt(sp[2]);
 					if(x_<x) continue;
