@@ -58,13 +58,9 @@ public class A3Merge {
 				int nb=0;
 				StringBuffer sb = new StringBuffer();
 				for(String f : files) {
-					if(f.contains("_EPSG2169.laz_depr.png")) continue;
-					if(f.contains("_EPSG2169.laz_depr.pgw")) continue;
-					if(f.contains("_EPSG2169.laz.pgw")) continue;
-					if(f.contains("_undergrowth")) continue;
-					if(f.contains("_vege")) continue;
-					if(f.contains(".xml")) continue;
+					if(!f.contains("rgb")) continue;
 					if(f.contains(".pgw")) continue;
+					if(f.contains(".xml")) continue;
 
 					int size = (int) Files.size(Paths.get(f));
 					if(size == 0) continue;

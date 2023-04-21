@@ -34,7 +34,7 @@ public class A2ToRGB {
 		for(String f : files) {
 			if(f.contains(".pgw")) continue;
 			if(f.contains(".xml")) continue;
-			if(f.contains(".laz_depr.png")) continue;
+			if(f.contains(".laz.png")) continue;
 			if(!f.contains(".png")) {
 				System.err.println(f);
 				continue;
@@ -55,7 +55,9 @@ public class A2ToRGB {
 
 			//
 			LOGGER.info(f);
-			String fOut = f.replace(".png", "_rgb.png");
+			String fOut = f.replace(".png", "_rgb.png").replace("/lux/", "/lux_rgb/");
+			//LOGGER.info(fOut);
+
 			String cmd = "pct2rgb.py " + f + " " + fOut;
 			//System.out.println(cmd);
 			A3Merge.run(cmd, true);
@@ -63,7 +65,7 @@ public class A2ToRGB {
 			//copy pgw file
 			Files.copy(
 					(new File(f.replace(".png", ".pgw"))).toPath(),
-					(new File(f.replace(".png", "_rgb.pgw"))).toPath(),
+					(new File(f.replace(".png", "_rgb.pgw").replace("/lux/", "/lux_rgb/"))).toPath(),
 					StandardCopyOption.REPLACE_EXISTING);
 		}
 
