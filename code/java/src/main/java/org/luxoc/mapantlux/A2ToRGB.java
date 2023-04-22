@@ -17,8 +17,8 @@ public class A2ToRGB {
 	public static void main(String[] args) throws Throwable {
 		LOGGER.info("Start");
 
-		int xS = 45000, yS = 55000;
-		int xE = 110000, yE = 140000;
+		int xS = 40000, yS = 30000;
+		int xE = 150000, yE = 200000;
 
 
 		LOGGER.info("Get output files");
@@ -53,9 +53,17 @@ public class A2ToRGB {
 			String fOut = f.replace(".png", "_rgb.png").replace("/lux/", "/lux_rgb/");
 			//LOGGER.info(fOut);
 
-			String cmd = "pct2rgb.py " + f + " " + fOut;
+			//copy f to fOut
+			Files.copy(
+					(new File(f)).toPath(),
+					(new File(fOut)).toPath(),
+					StandardCopyOption.REPLACE_EXISTING
+					);
+
+			//convert to RGB
+			String cmd = "pct2rgb.py " + fOut + " " + fOut;
 			//System.out.println(cmd);
-			A3Merge.run(cmd, true);
+			A3Merge.run(cmd, false);
 
 			//copy pgw file
 			String inPGW = f.replace(".png", ".pgw");
