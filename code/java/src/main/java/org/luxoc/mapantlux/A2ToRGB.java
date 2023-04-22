@@ -58,10 +58,21 @@ public class A2ToRGB {
 			A3Merge.run(cmd, true);
 
 			//copy pgw file
-			Files.copy(
-					(new File(f.replace(".png", ".pgw"))).toPath(),
-					(new File(f.replace(".png", "_rgb.pgw").replace("/lux/", "/lux_rgb/"))).toPath(),
-					StandardCopyOption.REPLACE_EXISTING);
+			String inPGW = f.replace(".png", ".pgw");
+			if(new File(inPGW).exists())
+				Files.copy(
+						(new File(inPGW)).toPath(),
+						(new File(f.replace(".png", "_rgb.pgw").replace("/lux/", "/lux_rgb/"))).toPath(),
+						StandardCopyOption.REPLACE_EXISTING
+						);
+			else {
+				//LIDAR2019_NdP_78000_80500_EPSG2169.laz_depr.png.aux.xml
+				Files.copy(
+						(new File(f+".aux.xml")).toPath(),
+						(new File(f.replace(".png", "_rgb.pgw").replace("/lux/", "/lux_rgb/") +".aux.xml")).toPath(),
+						StandardCopyOption.REPLACE_EXISTING
+						);
+			}
 		}
 
 		LOGGER.info("End");
