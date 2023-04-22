@@ -83,7 +83,7 @@ public class A3Merge {
 				LOGGER.info("   "+nb);
 				if(nb == 0) continue;
 
-				LOGGER.info("   Run gdal_merge");
+				LOGGER.info("   Merge to tiff");
 				//254 219 166
 				//-co COMPRESS=JPEG
 				String cmd = "gdal_merge.py -init \"255 255 255\" -o " +pathOut+"lux_merged/lux"+sign+"_.tiff " + sb.toString();
@@ -91,7 +91,7 @@ public class A3Merge {
 				//LOGGER.info("   " + cmd);
 				A3Merge.run(cmd, true);
 
-				LOGGER.info("   Run gdal_wrap to reproject");
+				LOGGER.info("   Reproject");
 				//gdalwarp -t_srs EPSG:4326 input.tif output.tif
 				//-co COMPRESS=JPEG
 				//-r bilinear 
@@ -101,12 +101,12 @@ public class A3Merge {
 
 				new File(pathOut+"lux_merged/lux"+sign+"_.tiff").delete();
 
-				LOGGER.info("   Run gdal_translate for PNG conversion");
+				LOGGER.info("   Convert to PNG");
 				cmd = "gdal_translate -of PNG " + pathOut+"lux_merged/lux"+sign+".tiff " + pathOut+"lux_merged/lux"+sign+".png";
 				A3Merge.run(cmd, true);
 				new File(pathOut+"lux_merged/lux"+sign+".tiff").delete();
 
-				LOGGER.info("   Run gdaladdo to build pyramid");
+				LOGGER.info("   Build pyramid");
 				//https://gdal.org/programs/gdaladdo.html
 				A3Merge.run("gdaladdo -r bilinear "+pathOut+"lux_merged/lux"+sign+".png", true);
 				//A3Merge.run("gdaladdo -r gauss "+pathOut+"lux_merged/lux"+sign+".tiff", true);
