@@ -94,6 +94,7 @@ public class A3Merge {
 				LOGGER.info("   Run gdal_wrap to reproject");
 				//gdalwarp -t_srs EPSG:4326 input.tif output.tif
 				//-co COMPRESS=JPEG
+				//-r bilinear 
 				cmd = "gdalwarp -overwrite -r bilinear -s_srs EPSG:2169 -t_srs EPSG:3857 -dstalpha " +pathOut+"lux_merged/lux"+sign+"_.tiff " +pathOut+"lux_merged/lux"+sign+".tiff ";
 				//LOGGER.info("   " + cmd);
 				A3Merge.run(cmd, true);

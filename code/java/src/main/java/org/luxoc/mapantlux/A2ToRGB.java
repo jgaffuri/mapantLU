@@ -77,7 +77,7 @@ public class A2ToRGB {
 				//LIDAR2019_NdP_78000_80500_EPSG2169.laz_depr.png.aux.xml
 				Files.copy(
 						(new File(f+".aux.xml")).toPath(),
-						(new File(f.replace(".png", "_rgb.pgw").replace("/lux/", "/lux_rgb/") +".aux.xml")).toPath(),
+						(new File(fOut +".aux.xml")).toPath(),
 						StandardCopyOption.REPLACE_EXISTING
 						);
 			}
