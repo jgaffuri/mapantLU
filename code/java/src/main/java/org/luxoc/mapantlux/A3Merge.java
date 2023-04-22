@@ -1,8 +1,6 @@
 package org.luxoc.mapantlux;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
