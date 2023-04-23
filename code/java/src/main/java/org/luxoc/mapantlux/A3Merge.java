@@ -41,9 +41,13 @@ public class A3Merge {
 		Set<String> files = A0Status.getFiles(pathOut+"out/lux_rgb/");
 		LOGGER.info(files.size());
 
-		int xS = 45000, yS = 55000;
-		//int xE = 55000, yE = 65000;
-		int xE = 110000, yE = 140000;
+		//entire map
+		//int xS = 45000, yS = 55000;
+		//int xE = 110000, yE = 140000;
+
+		int xS = 70000, yS = 55000;
+		int xE = 75000, yE = 105000;
+
 		int step = 5000;
 
 		for(int x=xS; x<xE; x+=step)
