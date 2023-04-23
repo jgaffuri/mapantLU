@@ -39,7 +39,7 @@ public class A1Download {
 		int yMin = 0;
 		int yMax = 100000;//; 95500
 
-		//TODO parallelisation
+		//parallelisation ?
 		//ArrayList<String> urls = new ArrayList();
 
 		for(Feature zt : ziptiles) {
