@@ -46,7 +46,7 @@ public class A3Merge {
 		//int xE = 110000, yE = 140000;
 
 		int xS = 70000, yS = 55000;
-		int xE = 75000, yE = 105000;
+		int xE = 80000, yE = 105000;
 
 		int step = 5000;
 
