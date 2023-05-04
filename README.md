@@ -1,8 +1,8 @@
 # MapAnt Luxembourg
 
-Mapant.lu is a LIDAR based orienteering map of Luxembourg, similar to [mapant.fi](https://www.mapant.fi/), [mapant.es](https://mapant.es/), [mapant.no](https://mapant.no/) and [mapant.fr](https://mapant.fr/). It is computed with [Karttapullatin software](https://www.routegadget.net/karttapullautin/) on [ACT 2019 LIDAR data](https://act.public.lu/fr/cartographie/lidar1.html).
+[Mapant.lu](http://mapant.orienteering.lu/) is a LIDAR based orienteering map of Luxembourg, similar to [mapant.fi](https://www.mapant.fi/), [mapant.es](https://mapant.es/), [mapant.no](https://mapant.no/) and [mapant.fr](https://mapant.fr/). It is computed with [Karttapullatin software](https://www.routegadget.net/karttapullautin/) on [ACT 2019 LIDAR data](https://act.public.lu/fr/cartographie/lidar1.html).
 
-See the map [**HERE**](https://jgaffuri.github.io/mapantLU/code/js/) (under progress).
+See the map [**HERE**](http://mapant.orienteering.lu/) (under progress).
 
 ## Few screenshots
 
@@ -16,4 +16,4 @@ See the map [**HERE**](https://jgaffuri.github.io/mapantLU/code/js/) (under prog
 ## Other
 
 - [Resource estimation](docs/estimation.md)
-- [Open data Luxembourg](https://data.public.lu/fr/reuses/cartographie-pour-course-dorientation-mapant-luxembourg/)
+- [Open data Luxembourg entry](https://data.public.lu/fr/reuses/cartographie-pour-course-dorientation-mapant-luxembourg/)

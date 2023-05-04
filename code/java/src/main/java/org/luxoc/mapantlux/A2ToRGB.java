@@ -18,12 +18,12 @@ public class A2ToRGB {
 		LOGGER.info("Start");
 
 		//south
-		int xS = 83000, yS = 30000;
-		int xE = 84000, yE = 102000;
+		//int xS = 83000, yS = 30000;
+		//int xE = 84000, yE = 102000;
 
 		//north
-		//int xS = 63000, yS = 100000;
-		//int xE = 75000, yE = 140000;
+		int xS = 63000, yS = 100000;
+		int xE = 75000, yE = 140000;
 
 
 		LOGGER.info("Get output files");
