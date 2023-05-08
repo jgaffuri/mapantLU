@@ -34,8 +34,8 @@ public class A1Download {
 		ArrayList<Feature> ziptiles = GeoData.getFeatures("/home/juju/Bureau/workspace/mapantLU/code/qgis/lidar_urls.gpkg");
 		LOGGER.info(ziptiles.size());
 
-		int xMin = 79000;
-		int xMax = 90000;//;51500
+		int xMin = 90000;
+		int xMax = 94000;//;51500
 		int yMin = 0;
 		int yMax = 100000;//; 95500
 
