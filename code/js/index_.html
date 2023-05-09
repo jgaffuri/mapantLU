@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mapant Luxembourg</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+<style>
+   body {
+        padding: 0;
+        margin: 0;
+    }
+    html, body, #map {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+
+	//function to retrieve URL parameters
+	var getParameterByName = function(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+		return !results? null : decodeURIComponent(results[1].replace(/\+/g, " "));
+	};
+
+	var
+		latIni = +getParameterByName("lat") || 49.8133,
+		lonIni = +getParameterByName("lon") || 6.1401,
+		zoomIni = +getParameterByName("z") || 10
+		;
+	
+
+
+//https://leafletjs.com/reference.html#map-option
+
+const malu = L.tileLayer('https://ahahah.eu/luxoc/mapantlux_tiles/{z}/{x}/{y}.png', {
+    attribution: "Lidar data 2019 <a href=\"https://data.public.lu/fr/datasets/lidar-2019-releve-3d-du-territoire-luxembourgeois\">ACT</a>, <a href=\"https://github.com/jgaffuri/mapantLU\">MapAnt Luxembourg</a>",
+	minZoom: 9, maxZoom: 16
+});
+const olu = L.tileLayer('https://ahahah.eu/luxoc/map/luxocmap/{z}/{x}/{y}.png', {
+	minZoom: 9, maxZoom: 15
+});
+
+const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: "(C) <a target=\"_parent\" href=\"https://www.openstreetmap.org\">OpenStreetMap</a> and contributors, under <a target=\"_parent\" href=\"https://www.openstreetmap.org/copyright\">license</a>",
+	maxZoom: 16
+});
+
+const dsm1 = L.tileLayer('https://{s}.lidar-hillshade-2019.openstreetmap.lu/layer/mappers_delight_lidar_hillshade_2019_reprojected/{z}/{x}/{y}.png', {
+    attribution: "Lidar data 2019 <a href=\"https://data.public.lu/fr/datasets/lidar-2019-releve-3d-du-territoire-luxembourgeois\">ACT</a>, DEM <a href=\"https://twitter.com/grischard\">Guillaume Rischard</a>, CC0",
+	maxZoom: 16
+});
+const dsm2 = L.tileLayer('https://{s}.lidar-hillshade-2019.openstreetmap.lu/layer/mappers_delight_lidar_hillshade_2019_withunclassified/{z}/{x}/{y}.png', {
+    attribution: "Lidar data 2019 <a href=\"https://data.public.lu/fr/datasets/lidar-2019-releve-3d-du-territoire-luxembourgeois\">ACT</a>, DEM <a href=\"https://twitter.com/grischard\">Guillaume Rischard</a>, CC0",
+	maxZoom: 16
+});
+
+//See: https://apiv4.geoportail.lu/proj/1.0/build/apidoc/examples/iterate_layers_api.html
+
+//https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/13/4235/2790.jpeg
+//https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/13/4239/2788.jpeg
+//https://wmts4.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/13/4235/2789.jpeg
+
+
+//https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/15/16960/11162.jpeg
+const img = L.tileLayer(
+	//'https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.jpeg'
+	'https://wmts4.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.jpeg'
+	//'https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/topo/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.png'
+	, {
+    attribution: "<a href=\"https://act.public.lu\">ACT</a>, <a href=\"https://map.geoportail.lu/\">Geoportail.lu</a>",
+	maxZoom: 16
+});
+
+//https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/15/16960/11162.jpeg
+const topo = L.tileLayer(
+	'https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/topo/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.png'
+	, {
+    attribution: "<a href=\"https://act.public.lu\">ACT</a>, <a href=\"https://map.geoportail.lu/\">Geoportail.lu</a>",
+	maxZoom: 16
+});
+
+
+//natura2000_oiseaux
+//natura2000_habitats
+
+
+const map = L.map('map', {
+	center: [latIni, lonIni],
+	zoom: zoomIni,
+	attributionControl: true,
+    layers: [malu]
+});
+
+map.attributionControl.setPrefix(false)
+
+	const baseLayers = {
+		'Mapant LU': malu,
+		'Map': topo,
+		'Imagery': img,
+		'DSM 1': dsm1,
+		'DSM 2': dsm2,
+		'Old version': olu,
+		//'OpenStreetMap': osm,
+	};
+
+
+	const layerControl = L.control.layers(baseLayers, undefined, { collapsed:false }).addTo(map);
+
+	//const mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+ 	//const satellite = L.tileLayer(mbUrl, {id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1});
+	//layerControl.addBaseLayer(satellite, 'Satellite');
+
+</script>
+
+</body>
+</html>
