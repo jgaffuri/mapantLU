@@ -31,9 +31,9 @@
 	};
 
 	var
-		latIni = +getParameterByName("lat") || 49.8133,
-		lonIni = +getParameterByName("lon") || 6.1401,
-		zoomIni = +getParameterByName("z") || 10
+		latIni = +getParameterByName("lat") || 49.75,
+		lonIni = +getParameterByName("lon") || 6.18,
+		zoomIni = +getParameterByName("z") || 12
 		;
 	
 
@@ -48,11 +48,13 @@ const olu = L.tileLayer('https://ahahah.eu/luxoc/map/luxocmap/{z}/{x}/{y}.png', 
 	minZoom: 9, maxZoom: 15
 });
 
+/*
 const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: "(C) <a target=\"_parent\" href=\"https://www.openstreetmap.org\">OpenStreetMap</a> and contributors, under <a target=\"_parent\" href=\"https://www.openstreetmap.org/copyright\">license</a>",
 	maxZoom: 16
-});
+});*/
 
+//https://c.lidar-hillshade-2019.openstreetmap.lu/layer/mappers_delight_lidar_hillshade_2019_reprojected/15/16926/11150.png
 const dsm1 = L.tileLayer('https://{s}.lidar-hillshade-2019.openstreetmap.lu/layer/mappers_delight_lidar_hillshade_2019_reprojected/{z}/{x}/{y}.png', {
     attribution: "Lidar data 2019 <a href=\"https://data.public.lu/fr/datasets/lidar-2019-releve-3d-du-territoire-luxembourgeois\">ACT</a>, DEM <a href=\"https://twitter.com/grischard\">Guillaume Rischard</a>, CC0",
 	maxZoom: 16
@@ -62,28 +64,28 @@ const dsm2 = L.tileLayer('https://{s}.lidar-hillshade-2019.openstreetmap.lu/laye
 	maxZoom: 16
 });
 
+//See: https://apiv4.geoportail.lu/proj/1.0/build/apidoc/
 //See: https://apiv4.geoportail.lu/proj/1.0/build/apidoc/examples/iterate_layers_api.html
-
 //https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/13/4235/2790.jpeg
 //https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/13/4239/2788.jpeg
 //https://wmts4.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/13/4235/2789.jpeg
-
-
+//https://wms.geoportail.lu/public_map_layers/service?
 //https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/15/16960/11162.jpeg
+
 const img = L.tileLayer(
-	//'https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.jpeg'
-	'https://wmts4.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.jpeg'
-	//'https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/topo/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.png'
+	'https://wmts{s}.geoportail.lu/mapproxy_4_v3/wmts/ortho_2022/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.jpeg'
 	, {
     attribution: "<a href=\"https://act.public.lu\">ACT</a>, <a href=\"https://map.geoportail.lu/\">Geoportail.lu</a>",
+	subdomains: "1234",
 	maxZoom: 16
 });
 
 //https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/orthogr_2013_global/GLOBAL_WEBMERCATOR_4_V3/15/16960/11162.jpeg
 const topo = L.tileLayer(
-	'https://wmts3.geoportail.lu/mapproxy_4_v3/wmts/topo/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.png'
+	'https://wmts{s}.geoportail.lu/mapproxy_4_v3/wmts/topo/GLOBAL_WEBMERCATOR_4_V3/{z}/{x}/{y}.png'
 	, {
     attribution: "<a href=\"https://act.public.lu\">ACT</a>, <a href=\"https://map.geoportail.lu/\">Geoportail.lu</a>",
+	subdomains: "1234",
 	maxZoom: 16
 });
 
