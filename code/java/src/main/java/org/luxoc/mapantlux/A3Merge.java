@@ -46,7 +46,7 @@ public class A3Merge {
 		//int xE = 110000, yE = 140000;
 
 		//south
-		int xS = 85000, yS = 55000;
+		int xS = 90000, yS = 55000;
 		int xE = 95000, yE = 105000;
 
 		//north
