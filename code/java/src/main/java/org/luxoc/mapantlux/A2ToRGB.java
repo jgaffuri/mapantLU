@@ -18,8 +18,8 @@ public class A2ToRGB {
 		LOGGER.info("Start");
 
 		//south
-		int xS = 87500, yS = 30000;
-		int xE = 90000, yE = 102000;
+		int xS = 89000, yS = 30000;
+		int xE = 91500, yE = 102000;
 
 		//north
 		//int xS = 63000, yS = 100000;
