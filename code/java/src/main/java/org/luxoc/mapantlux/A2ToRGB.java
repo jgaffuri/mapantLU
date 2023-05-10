@@ -19,7 +19,7 @@ public class A2ToRGB {
 
 		//south
 		int xS = 90000, yS = 30000;
-		int xE = 91500, yE = 102000;
+		int xE = 95000, yE = 102000;
 
 		//north
 		//int xS = 63000, yS = 100000;
